@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!-- # ===================== HEAD ===================== -->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brasil Sneakers</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+/* # ===================== VARIABLES ===================== */
+:root{
+ --dark:#0b0b0b;
+ --light:#f2f2f2;
+ --accent:#ff6a00;
+ --card:#ffffff;
+ --whatsapp:#25d366;
+}
+
+/* # ===================== RESET ===================== */
+*{
+ margin:0;
+ padding:0;
+ box-sizing:border-box;
+ font-family:Poppins, Arial, Helvetica, sans-serif;
+}
+
+/* # ===================== BODY ===================== */
+body{
+ background:#0b0b0b;
+ color:#f2f2f2;
+ overflow-x:hidden;
+}
+
+/* # ===================== LOGO ===================== */
+.logo{
+ font-size:1.7em;
+ font-weight:800;
+ letter-spacing:2px;
+ color:#ff6a00;
+}
+.logo span{color:#fff;font-weight:300}
+
+/* # ===================== NAV ===================== */
+nav{
+ position:fixed;
+ top:0;
+ width:100%;
+ padding:15px 40px;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ background:rgba(0,0,0,.9);
+ z-index:1000;
+}
+
+nav ul{
+ list-style:none;
+ display:flex;
+ gap:25px;
+}
+
+nav li{
+ cursor:pointer;
+ transition:.3s;
+}
+nav li:hover{color:#ff6a00}
+
+/* # ===================== SECCIONES ===================== */
+section{
+ min-height:100vh;
+ padding:120px 8%;
+ display:none;
+ opacity:0;
+}
+
+section.active{
+ display:block;
+ opacity:1;
+ animation:fade .6s ease;
+}
+
+/* # ===================== HERO ===================== */
+.hero{
+ background:url("https://images.unsplash.com/photo-1542291026-7eec264c27ff") center/cover no-repeat;
+ display:flex;
+ align-items:center;
+}
+
+.hero-box{
+ background:rgba(0,0,0,.75);
+ padding:40px;
+ border-radius:25px;
+ max-width:700px;
+}
+
+.hero h2{font-size:3em}
+.hero p{margin-top:15px;font-size:1.1em}
+
+/* # ===================== CATÁLOGO ===================== */
+.cards{
+ display:flex;
+ flex-wrap:wrap;
+ gap:30px;
+ justify-content:center;
+}
+
+.card{
+ background:#fff;
+ color:#000;
+ border-radius:22px;
+ overflow:hidden;
+ width:260px;
+ box-shadow:0 20px 40px rgba(0,0,0,.45);
+ transition:.4s;
+}
+
+.card:hover{transform:translateY(-12px)}
+
+.card img{
+ width:100%;
+ height:220px;
+ object-fit:cover;
+ display:block;
+}
+
+.card h3{padding:15px 15px 5px}
+.card span{padding:0 15px;font-size:.85em;color:#555}
+.card p{padding:10px 15px;font-weight:700;color:#ff6a00}
+
+.card button{
+ margin:15px;
+ padding:12px;
+ width:calc(100% - 30px);
+ border:none;
+ border-radius:12px;
+ background:#25d366;
+ color:#fff;
+ font-weight:600;
+ cursor:pointer;
+}
+
+/* # ===================== OPINIONES ===================== */
+.opinion{
+ background:#1a1a1a;
+ padding:25px;
+ border-radius:18px;
+ margin-bottom:20px;
+}
+
+/* # ===================== WHATSAPP ===================== */
+.whatsapp{
+ position:fixed;
+ bottom:25px;
+ right:25px;
+ background:#25d366;
+ padding:15px 22px;
+ border-radius:50px;
+ color:#fff;
+ text-decoration:none;
+ font-weight:600;
+ box-shadow:0 10px 25px rgba(0,0,0,.4);
+ transition:.3s;
+ z-index:2000;
+}
+.whatsapp:hover{transform:scale(1.1)}
+
+@keyframes fade{
+ from{opacity:0;transform:translateY(30px)}
+ to{opacity:1;transform:translateY(0)}
+}
+
+/* # ===================== RESPONSIVE ===================== */
+@media(max-width:768px){
+ nav{padding:15px 20px}
+ .hero h2{font-size:2.2em}
+}
+</style>
+</head>
+
+<body>
+
+<!-- # ===================== NAV ===================== -->
+<nav>
+ <div class="logo">BRASIL<span>SNEAKERS</span></div>
+ <ul>
+  <li onclick="showSection('inicio')">Inicio</li>
+  <li onclick="showSection('catalogoSec')">Catálogo</li>
+  <li onclick="showSection('opiniones')">Opiniones</li>
+  <li onclick="showSection('contacto')">Contacto</li>
+ </ul>
+</nav>
+
+<!-- # ===================== SECCIÓN INICIO ===================== -->
+<section id="inicio" class="active hero">
+ <div class="hero-box">
+  <h2>Zapatillas Brasileñas</h2>
+  <p>Tienda urbana profesional · Modelos exclusivos · Precios accesibles en pesos argentinos</p>
+ </div>
+</section>
+
+<!-- # ===================== SECCIÓN CATÁLOGO ===================== -->
+<section id="catalogoSec">
+<h2>Catálogo Completo 👟</h2><br>
+<div class="cards" id="catalogo"></div>
+</section>
+
+<!-- # ===================== SECCIÓN OPINIONES ===================== -->
+<section id="opiniones">
+<h2>Opiniones ⭐</h2><br>
+<div class="opinion">"Muy buena calidad, parecen originales"</div>
+<div class="opinion">"Excelente atención por WhatsApp"</div>
+<div class="opinion">"Compré dos pares y llegaron perfectos"</div>
+</section>
+
+<!-- # ===================== SECCIÓN CONTACTO ===================== -->
+<section id="contacto">
+<h2>Contactanos 📲</h2>
+<p>Compra directa por WhatsApp</p><br>
+<a href="https://wa.me/5491155771049" target="_blank" style="color:#ff6a00;font-size:1.4em">
+👉 Hablar ahora
+</a>
+</section>
+
+<!-- # ===================== BOTÓN WHATSAPP ===================== -->
+<a class="whatsapp" href="https://wa.me/5491155771049" target="_blank">💬 WhatsApp</a>
+
+<!-- # ===================== JAVASCRIPT ===================== -->
+<script>
+/* # ---------- CAMBIO DE SECCIONES ---------- */
+function showSection(id){
+ var secs=document.getElementsByTagName("section");
+ for(var i=0;i<secs.length;i++){
+  secs[i].className="";
+ }
+ document.getElementById(id).className="active";
+}
+
+/* # ---------- MODELOS ---------- */
+var modelos=[
+ "Río Street","São Paulo Pro","Copacabana","Amazonas","Favela Urban",
+ "Bahía Run","Fortaleza","Recife","Natal","Salvador"
+];
+
+/* # ---------- IMÁGENES (MISMO ORDEN QUE MODELOS) ---------- */
+var imagenes=[
+ // Río Street
+ "1552346154-21d32810aba3",
+
+ // São Paulo Pro
+ "1543508282-6319a3e2621f",
+
+ // Copacabana
+ "1514989940723-e8e51635b782",
+
+ // Amazonas
+ "1584735175315-9d5df23860e6",
+
+ // Favela Urban
+ "1600185365483-26d7a4cc7519",
+
+ // Bahía Run
+ "1595950653106-6c9ebd614d2c",
+
+ // Fortaleza
+ "1597045566677-8cf3e3cde0b2",
+
+ // Recife
+ "1575537302964-96cd47c06a3a",
+
+ // Natal
+ "1608231387042-66d1773070a5",
+
+ // Salvador
+ "1525966222134-fcfa99b8ae77"
+];
+
+/* # ---------- CREAR CATÁLOGO ---------- */
+var cont=document.getElementById("catalogo");
+
+for(var i=0;i<modelos.length;i++){
+ cont.innerHTML+=
+ '<div class="card">'+
+ '<img src="https://images.unsplash.com/photo-'+imagenes[i]+'?auto=format&fit=crop&w=800&q=80">'+
+ '<h3>'+modelos[i]+'</h3>'+
+ '<span>Zapatilla urbana brasileña premium</span>'+
+ '<p>$'+(36000+(i%6)*2200)+' ARS</p>'+
+ '<button onclick="comprar(\''+modelos[i]+'\')">Comprar por WhatsApp</button>'+
+ '</div>';
+}
+
+/* # ---------- WHATSAPP ---------- */
+function comprar(modelo){
+ window.open(
+  "https://wa.me/5491155771049?text="+
+  encodeURIComponent("Hola! Quiero comprar el modelo "+modelo),
+  "_blank"
+ );
+}
+</script>
+
+</body>
+</html>
+
